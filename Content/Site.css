@@ -25,6 +25,7 @@ textarea {
 
 /* HOME PAGE */
 
-.jumbotron {
-    background: url('./Images/header.jpg');
+.main-header {
+    background-image: url('../images/header.jpg');
+    background-size: cover;
 }
