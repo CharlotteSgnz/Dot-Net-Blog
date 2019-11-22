@@ -149,5 +149,3 @@ _[Ss]cripts
 *.ncrunchsolution
 
 *.dot[Cc]over
-/App_Data/Users.mdf
-/App_Data/Users_log.ldf

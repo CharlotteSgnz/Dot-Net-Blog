@@ -14,32 +14,40 @@
     <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item">
-                <strong> @Html.ActionLink("L'aquarium", "Index", "Home", new { @class = "navbar-item" })</strong>
+                <strong>L'AQUARIUM</strong>
             </a>
         </div>
         <div id="navbarBasicExample" class="navbar-menu">
-            
+            <div class="navbar-start">
+          
+            </div>
 
             <div class="navbar-end">
-                @Html.ActionLink("Contact", "Contact", "Home", new { @class = "navbar-item" })
-
-                @Html.ActionLink("About", "About", "Home", new { @class = "navbar-item" })
-
-                @Html.ActionLink("Archives", "Archives", "Home", new { @class = "navbar-item" })
-
-
-                @Html.ActionLink("Poster", "Poster", "Home", new { @class = "navbar-item" })
-
-
-                @Html.Partial("_LoginPartial")
-
-           
+                <a class="navbar-item">
+                    Home
+                </a>
+                <a class="navbar-item">
+                    Archive
+                </a>
+                <a class="navbar-item">
+                    Contact
+                </a>
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-primary">
+                            <strong>Inscription</strong>
+                        </a>
+                        <a class="button is-light">
+                            Connexion
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 
     <div class="container-fluid">
-        @RenderBody() 
+        @RenderBody()
         <hr />
     </div>
 
