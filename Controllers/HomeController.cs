@@ -13,6 +13,20 @@ namespace Blog.Controllers
             return View();
         }
 
+        public ActionResult Archives()
+        {
+            ViewBag.Message = "Liste des archives à venir";
+
+            return View();
+        }
+
+        public ActionResult Poster()
+        {
+            ViewBag.Message = "Vous pourrez bientôt écrire vos posts ici :)";
+
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

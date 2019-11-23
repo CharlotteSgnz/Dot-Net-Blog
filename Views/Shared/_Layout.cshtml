@@ -14,7 +14,7 @@
     <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item">
-                <strong>L'AQUARIUM</strong>
+                <strong> @Html.ActionLink("L'aquarium", "Index", "Home", null, new { @class = "navbar-item" })</strong>
             </a>
         </div>
         <div id="navbarBasicExample" class="navbar-menu">
@@ -23,15 +23,20 @@
             </div>
 
             <div class="navbar-end">
-                <a class="navbar-item">
-                    Home
-                </a>
-                <a class="navbar-item">
-                    Archive
-                </a>
-                <a class="navbar-item">
-                    Contact
-                </a>
+
+
+                @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "navbar-item" })
+
+                @Html.ActionLink("About", "About", "Home", null, new { @class = "navbar-item" })
+
+                @Html.ActionLink("Archives", "Archives", "Home", null, new { @class = "navbar-item" })
+
+
+                @Html.ActionLink("Poster", "Poster", "Home", null, new { @class = "navbar-item" })
+
+
+
+
                 <div class="navbar-item">
                     <div class="buttons">
                         <a class="button is-primary">
@@ -49,6 +54,9 @@
     <div class="container-fluid">
         @RenderBody()
         <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Le blog des fans de poisson</p>
+        </footer>
     </div>
 
     @RenderSection("scripts", required: false)
