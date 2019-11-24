@@ -1,0 +1,22 @@
+﻿@model Blog.Models.Comment
+
+<section>
+    @using (Html.BeginForm("Create", "Comments", new { id = ViewData["ArticleID"] }, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <h3>Donnez votre avis:</h3>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Content, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(m => m.Content, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Content, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Poster" class="btn btn-default" />
+            </div>
+        </div>
+
+    }
+</section>

@@ -49,11 +49,11 @@ namespace Blog.Controllers
         }
 
         // GET: Comments/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
-            ViewBag.ArticleID = new SelectList(db.Articles, "ArticleID", "Title");
-            ViewBag.UserID = new SelectList(db.Users, "UserID", "Pseudo");
-            return View();
+
+            ViewBag.ArticleID = id;
+            return PartialView("_AddComment");
         }
 
         // POST: Comments/Create
@@ -61,13 +61,30 @@ namespace Blog.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CommentID,Content,Date,UserID,ArticleID")] Comment comment)
+        public ActionResult Create([Bind(Include = "CommentID,Content,Date,UserID,ArticleID")] Comment comment, int? id)
         {
+          if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            //Définit l'auteur du commentaire
+            string name = User.Identity.Name;
+            var auteur = db.Users.FirstOrDefault(c => c.Pseudo == name);
+            var auteurID = auteur.UserID;
+            comment.UserID = auteurID;
+
+            //Définit la date de publication du commentaire
+            comment.Date = DateTime.Now;
+
+
+            //Définit l'article du commentaire
+            comment.ArticleID = id.Value;
+
             if (ModelState.IsValid)
             {
                 db.Comments.Add(comment);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Articles", new { id  = comment.ArticleID } );
             }
 
             ViewBag.ArticleID = new SelectList(db.Articles, "ArticleID", "Title", comment.ArticleID);
@@ -135,6 +152,8 @@ namespace Blog.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+    
 
         protected override void Dispose(bool disposing)
         {

@@ -23,6 +23,14 @@ namespace Blog.Controllers
             return View(articles.ToList());
         }
 
+        //Récupère l'auteur d'un commentaire
+        public string GetAuthor(int id)
+        {
+            string pseudo = db.Users.Find(id).Pseudo;
+            return pseudo;
+        }
+
+
         // GET: Articles/Details/5
         public ActionResult Details(int? id)
         {
@@ -38,6 +46,7 @@ namespace Blog.Controllers
             return View(article);
         }
 
+        //Récupère les commentaires d'un articles et les envois à la vue partielle "_ArticleComments"
         [ChildActionOnly]
         public ActionResult ArticleComments(int? id)
         {
@@ -47,6 +56,8 @@ namespace Blog.Controllers
             }
             var comments = db.Comments.Where(c => c.ArticleID == id).OrderBy(c => c.Date).ToList();
 
+
+            ViewData["ArticleID"] = id.ToString();
             return PartialView("_ArticleComments", comments);
         }
 

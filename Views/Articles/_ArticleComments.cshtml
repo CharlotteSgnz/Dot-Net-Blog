@@ -1,8 +1,18 @@
 ﻿@model IEnumerable<Blog.Models.Comment>
+@using Blog.Controllers;
 
 @foreach (var item in Model)
 {
+
+
+    string pseudo = ((ArticlesController)this.ViewContext.Controller).GetAuthor(@item.UserID);
+
+    <p><strong>@pseudo</strong></p> 
     <p>@item.Content</p>
     <p>@item.Date</p>
-    <hr />
+    <br />
+}
+
+@{
+    Html.RenderAction("Create","Comments", new { id = ViewData["ArticleID"] });
 }
