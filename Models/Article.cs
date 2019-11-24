@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -10,6 +11,10 @@ namespace Blog.Models
         public int ArticleID { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
+
+        [Display(Name = "Date de publication")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Date { get; set; }
         public int UserID { get; set; }
 

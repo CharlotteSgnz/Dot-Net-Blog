@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -19,7 +21,7 @@
         </div>
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-          
+
             </div>
 
             <div class="navbar-end">
@@ -32,33 +34,25 @@
                 @Html.ActionLink("Archives", "Archives", "Home", null, new { @class = "navbar-item" })
 
 
-                @Html.ActionLink("Poster", "Poster", "Home", null, new { @class = "navbar-item" })
+                @Html.ActionLink("Poster", "Create", "Articles", null, new { @class = "navbar-item" })
 
 
 
 
-                <div class="navbar-item">
-                    <div class="buttons">
-                        <a class="button is-primary">
-                            <strong>Inscription</strong>
-                        </a>
-                        <a class="button is-light">
-                            Connexion
-                        </a>
-                    </div>
+
+              @Html.Partial("_LoginPartial")
                 </div>
             </div>
+        </nav>
+
+        <div class="container-fluid">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Le blog des fans de poisson</p>
+            </footer>
         </div>
-    </nav>
 
-    <div class="container-fluid">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Le blog des fans de poisson</p>
-        </footer>
-    </div>
-
-    @RenderSection("scripts", required: false)
-</body>
+        @RenderSection("scripts", required: false)
+    </body>
 </html>

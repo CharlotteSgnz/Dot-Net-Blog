@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Blog.DataAccess;
 using Blog.Models;
 
@@ -51,6 +52,17 @@ namespace Blog.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ArticleID,Title,Content,Date,UserID")] Article article)
         {
+            //Définit la date de publication de l'article
+            article.Date = DateTime.Now;
+
+            //Définit l'auteur de l'article
+            string name = User.Identity.Name;
+            var auteur = db.Users.First(c => c.Pseudo == name);
+            var auteurID = auteur.UserID;
+            article.UserID = auteurID;
+
+
+
             if (ModelState.IsValid)
             {
                 db.Articles.Add(article);

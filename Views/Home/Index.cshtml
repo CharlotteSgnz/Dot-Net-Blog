@@ -11,6 +11,12 @@
             <h2 class="subtitle">
                 Plongez avec votre maillot de bain en plein coeur du monde de Némo en visitant notre blog accompagné d'un petit son des dents de la mer ;)
             </h2>
+            @{ 
+                if (Request.IsAuthenticated)
+                {
+                    <div>Bienvenue @User.Identity.Name ! </div>
+                }
+            }
         </div>
     </div>
 </section>

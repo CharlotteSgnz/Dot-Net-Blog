@@ -5,6 +5,11 @@
 }
 
 <h2>Index</h2>
+<br />
+<br />
+<br />
+<br />
+<br />
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -26,26 +31,27 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Article.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.Pseudo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Content)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CommentID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CommentID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CommentID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Article.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Pseudo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CommentID })
+                @Html.ActionLink("Details", "Details", new { id = item.CommentID })
+                @Html.ActionLink("Delete", "Delete", new { id = item.CommentID })
+            </td>
+        </tr>
+    }
 
 </table>
