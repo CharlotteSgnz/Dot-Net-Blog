@@ -45,6 +45,15 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ArticleID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ArticleID }) 
     @Html.ActionLink("Back to List", "Index")
 </p>
+<div>
+    <hr />
+    <h2>Comment section :)</h2>
+    <br />
+   
+  @{
+      Html.RenderAction("ArticleComments", new { id = Model.ArticleID });
+   }  
+</div>

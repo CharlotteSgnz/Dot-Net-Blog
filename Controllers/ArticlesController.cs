@@ -19,7 +19,7 @@ namespace Blog.Controllers
         // GET: Articles
         public ActionResult Index()
         {
-            var articles = db.Articles.Include(a => a.User);
+            var articles = db.Articles.Include(a => a.User).OrderByDescending(a => a.Date);
             return View(articles.ToList());
         }
 
@@ -36,6 +36,18 @@ namespace Blog.Controllers
                 return HttpNotFound();
             }
             return View(article);
+        }
+
+        [ChildActionOnly]
+        public ActionResult ArticleComments(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var comments = db.Comments.Where(c => c.ArticleID == id).OrderBy(c => c.Date).ToList();
+
+            return PartialView("_ArticleComments", comments);
         }
 
         // GET: Articles/Create

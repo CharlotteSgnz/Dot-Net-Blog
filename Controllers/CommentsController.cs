@@ -16,11 +16,22 @@ namespace Blog.Controllers
         private BlogContext db = new BlogContext();
 
         // GET: Comments
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            var comments = db.Comments.Include(c => c.Article).Include(c => c.User);
-            return View(comments.ToList());
+            if (id != null)
+            {
+                var comments = db.Comments.Include(c => c.ArticleID == id.Value).Include(c => c.User);
+                return View(comments.ToList().OrderByDescending(c => c.Date));
+
+            }
+
+            else
+            {
+                var comments = db.Comments.Include(c => c.Article).Include(c => c.User);
+                return View(comments.ToList());
+            }
         }
+
 
         // GET: Comments/Details/5
         public ActionResult Details(int? id)
