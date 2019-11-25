@@ -15,8 +15,8 @@ namespace Blog.DataAccess
 
             var users = new List<User>
             {
-            new User{UserID=1,Pseudo="Patrick l'étoile de mer",Password="poissons",Email="patrick@gmail.com",User_Role=Role.Admin},
-            new User{UserID=2,Pseudo="Bob l'éponge",Password="poissons",Email="bob@gmail.com",User_Role=Role.Blogueur},
+            new User{UserID=2,Pseudo="Patrick l'étoile de mer",Password="poissons",Email="patrick@gmail.com",User_Role=Role.Blogueur},
+            new User{UserID=1,Pseudo="Bob l'éponge",Password="poissons",Email="bob@gmail.com",User_Role=Role.Admin},
             new User{UserID=3,Pseudo="Carlos Tentacule",Password="poissons",Email="carlos@gmail.com",User_Role=Role.Visiteur},
             new User{UserID=4,Pseudo="Capitaine Crabe",Password="poissons",Email="capitaine@gmail.com",User_Role=Role.Visiteur}
             };

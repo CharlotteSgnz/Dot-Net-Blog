@@ -15,6 +15,14 @@ namespace Blog.Controllers
     {
         private BlogContext db = new BlogContext();
 
+        //Récupère l'auteur d'un commentaire
+        public  string GetRole(string name)
+        {
+            // string role = db.Users.First(u => u.Pseudo == name).User_Role.ToString();
+            string role = "salut";
+            return role;
+        }
+
         // GET: User
         public ActionResult Index()
         {

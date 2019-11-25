@@ -1,4 +1,7 @@
-﻿
+﻿@* @model Blog.Models.User *@
+@using Blog.Controllers;
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +20,19 @@
             <a class="navbar-item">
                 <strong> @Html.ActionLink("L'aquarium", "Index", "Home", null, new { @class = "navbar-item" })</strong>
             </a>
+
+       @*         @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    string name = User.Identity.Name.ToString();
+                    string role = ((UsersController)this.ViewContext.Controller).GetRole(name);
+
+                    <p>@role</p>
+
+                 
+
+                }
+        *@
+
         </div>
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
@@ -24,7 +40,7 @@
             </div>
 
             <div class="navbar-end">
-
+                @Html.ActionLink("Poster", "Create", "Articles", null, new { @class = "navbar-item" })
 
                 @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "navbar-item" })
 
@@ -33,25 +49,24 @@
                 @Html.ActionLink("Archives", "Archives", "Home", null, new { @class = "navbar-item" })
 
 
-                @Html.ActionLink("Poster", "Create", "Articles", null, new { @class = "navbar-item" })
 
 
 
 
 
-              @Html.Partial("_LoginPartial")
-                </div>
+                @Html.Partial("_LoginPartial")
             </div>
-        </nav>
-
-        <div class="container-fluid">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - Le blog des fans de poisson</p>
-            </footer>
         </div>
+    </nav>
 
-        @RenderSection("scripts", required: false)
-    </body>
+    <div class="container-fluid">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Le blog des fans de poisson</p>
+        </footer>
+    </div>
+
+    @RenderSection("scripts", required: false)
+</body>
 </html>

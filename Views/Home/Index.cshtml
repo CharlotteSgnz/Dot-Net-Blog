@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<Blog.Models.Article>
+
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -11,7 +13,7 @@
             <h2 class="subtitle">
                 Plongez avec votre maillot de bain en plein coeur du monde de Némo en visitant notre blog accompagné d'un petit son des dents de la mer ;)
             </h2>
-            @{ 
+            @{
                 if (Request.IsAuthenticated)
                 {
                     <div>Bienvenue @User.Identity.Name ! </div>
@@ -38,8 +40,14 @@
                 </div>
             </div>
         </div>
+
+
         <div class="columns">
+            <!-- Affichage des Articles -->
+            @foreach (var item in Model)
+            {
             <div class="column">
+
                 <div class="card">
                     <div class="card-image">
                         <figure class="image is-4by3">
@@ -47,43 +55,76 @@
                         </figure>
                     </div>
                     <div class="card-content">
-                        <p class="title is-4">Titre</p>
+                        <p class="title is-4"> @Html.ActionLink(item.Title, "Details", "Articles", new { id = item.ArticleID }, null)</p>
+                        <p>
+                            Rédigé par : <strong>@Html.DisplayFor(modelItem => item.User.Pseudo)</strong>
+                        </p>
                         <div class="content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            @Html.DisplayFor(modelItem => item.Content)
                         </div>
+                        <p>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="column">
-                <div class="card">
-                    <div class="card-image">
-                        <figure class="image is-4by3">
-                            <img src="https://bulma.io/images/placeholders/640x480.png" alt="Placeholder image">
-                        </figure>
-                    </div>
-                    <div class="card-content">
-                        <p class="title is-4">Titre</p>
-                        <div class="content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="column">
-                <div class="card">
-                    <div class="card-image">
-                        <figure class="image is-4by3">
-                            <img src="https://bulma.io/images/placeholders/640x480.png" alt="Placeholder image">
-                        </figure>
-                    </div>
-                    <div class="card-content">
-                        <p class="title is-4">Titre</p>
-                        <div class="content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        </div>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
-    </div>
+             <!-- Fin -->
+                <div class="columns">
+                    <div class="column">
+                        <div class="card">
+                            <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <img src="https://bulma.io/images/placeholders/640x480.png" alt="Placeholder image">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <p class="title is-4">Titre</p>
+                                <div class="content">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="card">
+                            <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <img src="https://bulma.io/images/placeholders/640x480.png" alt="Placeholder image">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <p class="title is-4">Titre</p>
+                                <div class="content">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="card">
+                            <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <img src="https://bulma.io/images/placeholders/640x480.png" alt="Placeholder image">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <p class="title is-4">Titre</p>
+                                <div class="content">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 </section>

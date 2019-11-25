@@ -16,7 +16,8 @@ namespace Blog.Controllers
         //GET: Home/Index    --> Home/
         public ActionResult Index()
         {
-            return View();
+            var articles = _dbContext.Articles.OrderByDescending(a => a.Date);
+            return View(articles.ToList());
         }
 
         //GET: Home/Archives
@@ -72,9 +73,6 @@ namespace Blog.Controllers
 
                 if (IsValidUser)
                 {
-
-
-
                 FormsAuthentication.SetAuthCookie(user.Pseudo, false);
 
                 return RedirectToAction("Index", "Home");
