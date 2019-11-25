@@ -8,7 +8,7 @@ using System.Data.Entity;
 
 namespace Blog.DataAccess
 {
-    public class BlogInitializer : DropCreateDatabaseAlways<BlogContext>
+    public class BlogInitializer : DropCreateDatabaseIfModelChanges<BlogContext>
     {
         protected override void Seed(BlogContext context)
         {

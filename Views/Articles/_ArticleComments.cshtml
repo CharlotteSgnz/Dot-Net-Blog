@@ -4,10 +4,12 @@
 @foreach (var item in Model)
 {
 
-
-    string pseudo = ((ArticlesController)this.ViewContext.Controller).GetAuthor(@item.UserID);
-
-    <p><strong>@pseudo</strong></p> 
+    //Affiche l'auteur d'un commentaire
+    <p>
+    @{
+        Html.RenderAction("GetAuthor", "Comments", new { id = item.UserID });
+    }
+    </p>
     <p>@item.Content</p>
     <p>@item.Date</p>
     <br />

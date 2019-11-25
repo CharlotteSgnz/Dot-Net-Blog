@@ -15,12 +15,21 @@ namespace Blog.Controllers
     {
         private BlogContext db = new BlogContext();
 
-        //Récupère l'auteur d'un commentaire
-        public  string GetRole(string name)
+        //Affiche le bouton "Poster" si l'utilisateur a le role nécessaire ('Admin' ou 'Blogueur')
+        public  ActionResult PostArticle(string name)
         {
-            // string role = db.Users.First(u => u.Pseudo == name).User_Role.ToString();
-            string role = "salut";
-            return role;
+            Console.Write(name);
+            if (User.Identity.IsAuthenticated)
+            {
+                string role = db.Users.SingleOrDefault(u => u.Pseudo == name).User_Role.ToString();
+                ViewData["Role"] = role;
+            }
+            else
+            {
+                ViewData["Role"] = "Visiteur";
+            }
+
+            return PartialView("_PostButton");
         }
 
         // GET: User

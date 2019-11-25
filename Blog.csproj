@@ -198,6 +198,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Articles\_ArticleComments.cshtml" />
     <Content Include="Views\Comments\_AddComment.cshtml" />
+    <Content Include="Views\Shared\_PostButton.cshtml" />
+    <Content Include="Views\Comments\_CommentAuthor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -23,12 +23,7 @@ namespace Blog.Controllers
             return View(articles.ToList());
         }
 
-        //Récupère l'auteur d'un commentaire
-        public string GetAuthor(int id)
-        {
-            string pseudo = db.Users.Find(id).Pseudo;
-            return pseudo;
-        }
+       
 
 
         // GET: Articles/Details/5

@@ -1,0 +1,6 @@
+﻿
+
+@if ((string)ViewData["Role"] == "Admin" || (string)ViewData["Role"] == "Blogueur")
+{
+    @Html.ActionLink("Poster", "Create", "Articles", null, new { @class = "navbar-item" })
+}

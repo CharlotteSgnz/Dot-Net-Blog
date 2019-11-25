@@ -15,6 +15,15 @@ namespace Blog.Controllers
     {
         private BlogContext db = new BlogContext();
 
+        //Récupère l'auteur d'un commentaire
+        public ActionResult GetAuthor(int id)
+        {
+            string pseudo = db.Users.Find(id).Pseudo;
+            ViewData["Author"] = pseudo;
+
+            return PartialView("_CommentAuthor");
+        }
+
         // GET: Comments
         public ActionResult Index(int? id)
         {

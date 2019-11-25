@@ -1,5 +1,4 @@
-﻿@* @model Blog.Models.User *@
-@using Blog.Controllers;
+﻿@using Blog.Controllers;
 
 
 <!DOCTYPE html>
@@ -21,17 +20,17 @@
                 <strong> @Html.ActionLink("L'aquarium", "Index", "Home", null, new { @class = "navbar-item" })</strong>
             </a>
 
-       @*         @if (HttpContext.Current.User.Identity.IsAuthenticated)
-                {
-                    string name = User.Identity.Name.ToString();
-                    string role = ((UsersController)this.ViewContext.Controller).GetRole(name);
+            @*       @if (HttpContext.Current.User.Identity.IsAuthenticated)
+         {
+             string name = User.Identity.Name;
+             string role = ((UsersController)this.ViewContext.Controller).GetRole(name);
 
-                    <p>@role</p>
+            <p>@role</p>
 
-                 
 
-                }
-        *@
+
+        }
+            *@
 
         </div>
         <div id="navbarBasicExample" class="navbar-menu">
@@ -40,7 +39,10 @@
             </div>
 
             <div class="navbar-end">
-                @Html.ActionLink("Poster", "Create", "Articles", null, new { @class = "navbar-item" })
+                @{
+                    Html.RenderAction("PostArticle", "Users", new { name = User.Identity.Name });
+                }
+
 
                 @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "navbar-item" })
 
