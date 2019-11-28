@@ -16,11 +16,11 @@ namespace Blog.Controllers
         private BlogContext db = new BlogContext();
 
         //Affiche le bouton "Poster" si l'utilisateur a le role nécessaire ('Admin' ou 'Blogueur')
-        public  ActionResult PostArticle(string name)
+        public  ActionResult PostArticle()
         {
-            Console.Write(name);
             if (User.Identity.IsAuthenticated)
             {
+                string name = User.Identity.Name; 
                 string role = db.Users.SingleOrDefault(u => u.Pseudo == name).User_Role.ToString();
                 ViewData["Role"] = role;
             }

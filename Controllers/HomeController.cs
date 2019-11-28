@@ -20,6 +20,14 @@ namespace Blog.Controllers
             return View(articles.ToList());
         }
 
+        //GET: Home/Archives   (Sert uniquement à faciliter le développement, à supprimer avant la mise en production)
+        public ActionResult Database()
+        {
+            ViewBag.Message = "Liste des tables de la BDD (Uniquement 'Users' 'Articles' et 'Comments' sont disponibles actuellement)";
+
+            return View();
+        }
+
         //GET: Home/Archives
         public ActionResult Archives()
         {
@@ -52,7 +60,32 @@ namespace Blog.Controllers
             return View();
         }
 
-        
+        //GET: Comments/ValidateComments
+        public ActionResult ValidateComments()
+        {
+            var comments = _dbContext.Comments.Where(c => c.Validated == false);
+            return View(comments.ToList());
+        }
+
+        //Affiche le bouton "Poster" si l'utilisateur a le role nécessaire ('Admin' ou 'Blogueur')
+        public ActionResult ValidateButton()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                string name = User.Identity.Name;
+                string role = _dbContext.Users.SingleOrDefault(u => u.Pseudo == name).User_Role.ToString();
+                ViewData["Role"] = role;
+            }
+            else
+            {
+                ViewData["Role"] = "Visiteur";
+            }
+
+            return PartialView("_ValidateCommentsButton");
+        }
+
+
+
         //GET: Home/Login
         public ActionResult Login()
         {
@@ -71,8 +104,16 @@ namespace Blog.Controllers
                .Pseudo.ToLower() && user
                .Password == user.Password);
 
-                if (IsValidUser)
+            if (IsValidUser)
                 {
+                Role role = _dbContext.Users.Single(u => u.Pseudo.ToLower() == user
+               .Pseudo.ToLower() && user
+               .Password == user.Password).User_Role;
+                if (role == Role.Banni)
+                {
+                    return View("lockout");
+                }
+
                 FormsAuthentication.SetAuthCookie(user.Pseudo, false);
 
                 return RedirectToAction("Index", "Home");

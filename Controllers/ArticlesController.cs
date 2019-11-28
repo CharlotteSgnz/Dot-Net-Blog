@@ -59,6 +59,10 @@ namespace Blog.Controllers
         // GET: Articles/Create
         public ActionResult Create()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login","Home");
+            }
             ViewBag.UserID = new SelectList(db.Users, "UserID", "Pseudo");
             return View();
         }

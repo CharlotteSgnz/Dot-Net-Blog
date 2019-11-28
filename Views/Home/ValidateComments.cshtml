@@ -1,0 +1,87 @@
+﻿
+@model IEnumerable<Blog.Models.Comment>
+
+
+@{
+    ViewBag.Title = "CommentValidation";
+}
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<h2>CommentValidation</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Article.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Pseudo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Content)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            Valider
+        </th>
+        <th>
+            Supprimer
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Article.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Pseudo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Content)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @using (Html.BeginForm("Validate", "Comments", new { id = item.CommentID }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Valider" class="btn btn-default" />
+                </div>
+            }
+        </td>
+        <td>
+
+            @using (Html.BeginForm("Delete", "Comments", new { id = item.CommentID }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Supprimer" class="btn btn-default" /> 
+                </div>
+            }
+
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.CommentID })
+            @Html.ActionLink("Details", "Details", new { id = item.CommentID })
+            @Html.ActionLink("Delete", "Delete", new { id = item.CommentID })
+        </td>
+    </tr>
+    }
+
+</table>

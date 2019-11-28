@@ -10,7 +10,7 @@ namespace Blog.Models
 
     public enum Role
     {
-        Admin, Blogueur, Visiteur
+        Admin, Blogueur, Inscrit, Visiteur, Banni
     }
 
     public class User

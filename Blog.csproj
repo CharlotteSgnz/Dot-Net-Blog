@@ -200,6 +200,9 @@
     <Content Include="Views\Comments\_AddComment.cshtml" />
     <Content Include="Views\Shared\_PostButton.cshtml" />
     <Content Include="Views\Comments\_CommentAuthor.cshtml" />
+    <Content Include="Views\Home\ValidateComments.cshtml" />
+    <Content Include="Views\Home\Database.cshtml" />
+    <Content Include="Views\Shared\_ValidateCommentsButton.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

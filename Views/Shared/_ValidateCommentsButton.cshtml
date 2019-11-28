@@ -1,0 +1,6 @@
+﻿
+@if ((string)ViewData["Role"] == "Admin")
+{
+    @Html.ActionLink("Commentaires en attente", "ValidateComments", "Home", null, new { @class = "navbar-item" })
+
+}

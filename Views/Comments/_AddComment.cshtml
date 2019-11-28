@@ -1,7 +1,7 @@
 ﻿@model Blog.Models.Comment
 
 <section>
-    @using (Html.BeginForm("Create", "Comments", new { id = ViewData["ArticleID"] }, FormMethod.Post))
+    @using (Html.BeginForm("Create", "Comments", new { id = ViewData["ArticleID"]}, FormMethod.Post))
     {
         @Html.AntiForgeryToken()
         <h3>Donnez votre avis:</h3>

@@ -20,29 +20,21 @@
                 <strong> @Html.ActionLink("L'aquarium", "Index", "Home", null, new { @class = "navbar-item" })</strong>
             </a>
 
-            @*       @if (HttpContext.Current.User.Identity.IsAuthenticated)
-         {
-             string name = User.Identity.Name;
-             string role = ((UsersController)this.ViewContext.Controller).GetRole(name);
-
-            <p>@role</p>
-
-
-
-        }
-            *@
 
         </div>
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-
+                @Html.ActionLink("Base de donnée", "Database", "Home", null, new { @class = "navbar-item" })
             </div>
 
             <div class="navbar-end">
                 @{
-                    Html.RenderAction("PostArticle", "Users", new { name = User.Identity.Name });
+                    Html.RenderAction("ValidateButton", "Home");
                 }
 
+                @{
+                    Html.RenderAction("PostArticle", "Users");
+                }
 
                 @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "navbar-item" })
 

@@ -10,13 +10,14 @@ namespace Blog.Models
     {
         public int CommentID { get; set; }
         public string Content { get; set; }
-
-
         public DateTime Date { get; set; }
+        public bool Validated { get; set; } = false;
         public int UserID { get; set; }
         public int ArticleID { get; set; }
 
         public virtual User User { get; set; }
         public virtual Article Article { get; set; }
+
+
     }
 }

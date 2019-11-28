@@ -41,6 +41,28 @@ namespace Blog.Controllers
             }
         }
 
+        
+
+        //POST: Comments/Validate/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Validate(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Comment comment = db.Comments.Find(id);
+            if (comment == null)
+            {
+                return HttpNotFound();
+            }
+            comment.Validated = true;
+            db.SaveChanges();
+
+            return RedirectToAction("ValidateComments","Home");
+
+        }
 
         // GET: Comments/Details/5
         public ActionResult Details(int? id)
@@ -123,7 +145,7 @@ namespace Blog.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CommentID,Content,Date,UserID,ArticleID")] Comment comment)
+        public ActionResult Edit([Bind(Include = "CommentID,Content,Date,UserID,ArticleID,Validated")] Comment comment)
         {
             if (ModelState.IsValid)
             {
@@ -159,7 +181,7 @@ namespace Blog.Controllers
             Comment comment = db.Comments.Find(id);
             db.Comments.Remove(comment);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("ValidateComments","Home");
         }
 
     
