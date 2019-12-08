@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Blog.Models
 {
@@ -10,6 +11,8 @@ namespace Blog.Models
     {
         public int ArticleID { get; set; }
         public string Title { get; set; }
+
+        [AllowHtml]
         public string Content { get; set; }
 
         [Display(Name = "Date de publication")]
