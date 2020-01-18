@@ -12,6 +12,8 @@ namespace Blog.Models
         public int ArticleID { get; set; }
         public string Title { get; set; }
 
+        public string Cover { get; set; }
+
         public string Resume { get; set; }
 
         [AllowHtml]
