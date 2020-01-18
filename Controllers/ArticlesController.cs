@@ -117,7 +117,7 @@ namespace Blog.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ArticleID,Title,Content,Date,UserID")] Article article)
+        public ActionResult Edit([Bind(Include = "ArticleID,Title,Resume,Content,Date,UserID")] Article article)
         {
             if (ModelState.IsValid)
             {

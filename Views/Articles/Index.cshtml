@@ -20,6 +20,9 @@
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Resume)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Content)
         </th>
         <th>
@@ -37,6 +40,9 @@
             <td>
                 @Html.ActionLink(item.Title, "Details", new { id = item.ArticleID }) 
 
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Resume)
             </td>
             <td>
                 @Html.Raw(item.Content)
