@@ -4,64 +4,70 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<section class="section">
+    <div class="container">
+        <div class="columns is-multiline">
+            <div class="column is-8 is-offset-2">
+                <h2 class="is-size-1 has-text-weight-bold">@Html.DisplayFor(model => model.Title)</h2>
+            </div>
+            <div class="column is-8 is-offset-2">
+                <h3>Rédigé par  @Html.DisplayFor(model => model.User.Pseudo)</h3>
+                <h3>Publié le @Html.DisplayFor(model => model.Date)</h3>
+            </div>
+        </div>
+    </div>
+</section>
 
-<div>
-    <h4>Article</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.User.Pseudo)
-        </dt>
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-8 is-offset-2">
+                <p class="is-size-6 has-text-grey is-italic"> @Html.DisplayFor(model => model.Resume)</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-        <dd>
-            @Html.DisplayFor(model => model.User.Pseudo)
-        </dd>
+<section>
+    <div class="container" style="height: 350px; background:url('@Model.Cover') no-repeat;background-size: cover;background-position: center;">
+    </div>
+</section>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-8 is-offset-2">
+                @Html.Raw(Model.Content)
+            </div>
+        </div>
+    </div>
+</section>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-8 is-offset-2">
+                @Html.ActionLink("Edit", "Edit", new { id = Model.ArticleID })
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        </div>
+    </div>
+</section>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Resume)
-        </dt>
+<hr />
 
-        <dd>
-            @Html.DisplayFor(model => model.Resume)
-        </dd>
+<section>
+    <div class="container">
+        <div class="columns is-multiline">
+            <div class="column is-8 is-offset-2">
+                <h3>Commenataires</h3>
+            </div>
+            <div class="column is-8 is-offset-2">
+                @{
+                    Html.RenderAction("ArticleComments", new { id = Model.ArticleID });
+                }
+            </div>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Content)
-        </dt>
-
-        <dd>
-            @Html.Raw(Model.Content)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ArticleID }) 
-    @Html.ActionLink("Back to List", "Index")
-</p>
-<div>
-    <hr />
-    <h2>Comment section :)</h2>
-    <br />
-   
-  @{
-      Html.RenderAction("ArticleComments", new { id = Model.ArticleID });
-   }  
-</div>
+    </div>
+</section>
