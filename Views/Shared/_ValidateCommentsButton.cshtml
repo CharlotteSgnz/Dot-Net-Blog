@@ -1,6 +1,17 @@
 ﻿
 @if ((string)ViewData["Role"] == "Admin")
 {
-    @Html.ActionLink("Commentaires en attente", "ValidateComments", "Home", null, new { @class = "navbar-item" })
+    
 
+    <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+            Paramètres
+        </a>
+
+        <div class="navbar-dropdown">
+            @Html.ActionLink("Gérer les utilisateurs", "Index", "Users",null , new { @class = "navbar-item" })
+            @Html.ActionLink("Gérer les articles", "Index", "Articles", null , new { @class = "navbar-item" })
+            @Html.ActionLink("Gérer les commentaires", "ValidateComments", "Home", null , new { @class = "navbar-item" })
+        </div>
+    </div>
 }

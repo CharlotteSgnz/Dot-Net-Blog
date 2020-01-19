@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -72,7 +73,7 @@ namespace Blog.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ArticleID,Title,Content,Date,UserID")] Article article)
+        public ActionResult Create([Bind(Include = "ArticleID,Title,Cover,Resume,Content,Date,UserID")] Article article)
         {
             //Définit la date de publication de l'article
             article.Date = DateTime.Now;
@@ -153,6 +154,28 @@ namespace Blog.Controllers
             db.Articles.Remove(article);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult UploadCover(HttpPostedFileBase coverFile)
+        {
+            if (coverFile != null)
+            {
+                string path = Server.MapPath("~/Images/");
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
+                coverFile.SaveAs(path + Path.GetFileName(coverFile.FileName));
+                ViewBag.Message = "File uploaded successfully.";
+            }
+
+            return View();
+        }
+
+        public ActionResult SearchByName(string search)
+        {
+                return View(db.Articles.Where(x => x.Title.StartsWith(search) || search == null).ToList());
         }
 
         protected override void Dispose(bool disposing)

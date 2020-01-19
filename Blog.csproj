@@ -203,6 +203,7 @@
     <Content Include="Views\Home\ValidateComments.cshtml" />
     <Content Include="Views\Home\Database.cshtml" />
     <Content Include="Views\Shared\_ValidateCommentsButton.cshtml" />
+    <Content Include="Views\Home\_SearchPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,7 +1,6 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 5px;
     padding-bottom: 20px;
-    font-family: 'Lilita One'
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -26,7 +25,8 @@ textarea {
 
 /* HOME PAGE */
 
-.main-header {
-    background-image: url('../images/header.jpg');
+.hero.is-primary {
+    background-image: url('images/header.jpg') !important;
     background-size: cover;
+    height: 500px;
 }

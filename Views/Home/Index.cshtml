@@ -4,8 +4,8 @@
     ViewBag.Title = "Home Page";
 }
 
-<section class="main-header hero is-primary is-medium">
-    <div class="hero-body">
+<section class="main-header hero is-primary is-medium" style="background-image: url('~/Content/images/header.jpg'); background-size: cover;">
+    <div class="hero-body" >
         <div class="container">
             <h1 class="title">
                 Bienvenue dans l'aquarium
@@ -32,7 +32,7 @@
             <div class="column is-one-fifth">
                 <div class="field">
                     <p class="control has-icons-left has-icons-right">
-                        <input class="input" type="text" placeholder="Rechercher...">
+                        <input class="input" type="text" placeholder="Rechercher">
                         <span class="icon is-small is-left">
                             <i class="fas fa-search"></i>
                         </span>
@@ -42,12 +42,11 @@
         </div>
 
 
-        <div class="columns">
+        <div class="columns is-multiline">
             <!-- Affichage des Articles -->
             @foreach (var item in Model)
             {
-            <div class="column">
-
+            <div class="column is-4">
                 <div class="card">
                     <div class="card-image">
                         <figure class="image is-4by3">
@@ -70,54 +69,6 @@
             </div>
             }
         </div>
-             <!-- Fin -->
-                <div class="columns">
-                    <div class="column">
-                        <div class="card">
-                            <div class="card-image">
-                                <figure class="image is-4by3">
-                                    <img src="https://bulma.io/images/placeholders/640x480.png" alt="Placeholder image">
-                                </figure>
-                            </div>
-                            <div class="card-content">
-                                <p class="title is-4">Titre</p>
-                                <div class="content">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="card">
-                            <div class="card-image">
-                                <figure class="image is-4by3">
-                                    <img src="https://bulma.io/images/placeholders/640x480.png" alt="Placeholder image">
-                                </figure>
-                            </div>
-                            <div class="card-content">
-                                <p class="title is-4">Titre</p>
-                                <div class="content">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="card">
-                            <div class="card-image">
-                                <figure class="image is-4by3">
-                                    <img src="https://bulma.io/images/placeholders/640x480.png" alt="Placeholder image">
-                                </figure>
-                            </div>
-                            <div class="card-content">
-                                <p class="title is-4">Titre</p>
-                                <div class="content">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- Fin -->
+    </div>
 </section>

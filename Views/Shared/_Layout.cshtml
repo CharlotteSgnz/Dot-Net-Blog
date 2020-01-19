@@ -12,67 +12,67 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <link rel="stylesheet" href="~/Content/styles/summernote-lite.css">
     <link href="https://fonts.googleapis.com/css?family=Lilita+One&display=swap" rel="stylesheet">
-    @Styles.Render("~/Content/css")
+    <link rel="stylesheet" href= "~/Content/Site.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-</head>
-<body>
-    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a class="navbar-item">
-                <strong> @Html.ActionLink("L'aquarium", "Index", "Home", null, new { @class = "navbar-item" })</strong>
-            </a>
+    </head>
+    <body>
+        <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item">
+                    <strong> @Html.ActionLink("L'aquarium", "Index", "Home", null, new { @class = "navbar-item" })</strong>
+                </a>
 
 
-        </div>
-        <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-                @Html.ActionLink("Base de donnée", "Database", "Home", null, new { @class = "navbar-item" })
             </div>
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                    @Html.ActionLink("Base de donnée", "Database", "Home", null, new { @class = "navbar-item" })
+                </div>
 
-            <div class="navbar-end">
-                @{
-                    Html.RenderAction("ValidateButton", "Home");
-                }
+                <div class="navbar-end">
+                    @{
+                        Html.RenderAction("ValidateButton", "Home");
+                    }
 
-                @{
-                    Html.RenderAction("PostArticle", "Users");
-                }
+                    @{
+                        Html.RenderAction("PostArticle", "Users");
+                    }
 
-                @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "navbar-item" })
+                    @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "navbar-item" })
 
-                @Html.ActionLink("About", "About", "Home", null, new { @class = "navbar-item" })
+                    @Html.ActionLink("About", "About", "Home", null, new { @class = "navbar-item" })
 
-                @Html.ActionLink("Archives", "Archives", "Home", null, new { @class = "navbar-item" })
+                    @Html.ActionLink("Archives", "Archives", "Home", null, new { @class = "navbar-item" })
 
 
-                @Html.Partial("_LoginPartial")
+                    @Html.Partial("_LoginPartial")
+                </div>
             </div>
+        </nav>
+
+        <div class="container-fluid">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Le blog des fans de poisson</p>
+            </footer>
         </div>
-    </nav>
 
-    <div class="container-fluid">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Le blog des fans de poisson</p>
-        </footer>
-    </div>
-
-    @RenderSection("Scripts", required: false)
-    <script src="~/Scripts/summernote-lite.min.js"></script>
-    <script>
-        // Initialisation de la librairie summernote (editeur de texte)
-        $(document).ready(function () {
-            $('.summernote').summernote({
-                toolbar: [
-                    ['style', ['bold', 'italic', 'underline']],
-                    ['para', ['ul', 'ol']],
-                    ['insert', ['link', 'picture', 'video']]
-                ],
-                height: 300
-             })
-        });
-    </script>
-</body>
-</html>
+        @RenderSection("Scripts", required: false)
+        <script src="~/Scripts/summernote-lite.min.js"></script>
+        <script>
+            // Initialisation de la librairie summernote (editeur de texte)
+            $(document).ready(function () {
+                $('.summernote').summernote({
+                    toolbar: [
+                        ['style', ['bold', 'italic', 'underline']],
+                        ['para', ['ul', 'ol']],
+                        ['insert', ['link', 'picture', 'video']]
+                    ],
+                    height: 300
+                 })
+            });
+        </script>
+    </body>
+    </html>

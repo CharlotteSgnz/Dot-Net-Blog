@@ -5,16 +5,33 @@
 {
 
     //Affiche l'auteur d'un commentaire
-    <p>
-    @{
-        Html.RenderAction("GetAuthor", "Comments", new { id = item.UserID });
-    }
-    </p>
-    <p>@item.Content</p>
-    <p>@item.Date</p>
-    <br />
+ 
+
+    <div class="box">
+        <article class="media">
+            <div class="media-left">
+                <figure class="image is-64x64">
+                    <img src="https://static.thenounproject.com/png/638755-200.png" alt="Image">
+                </figure>
+            </div>
+            <div class="media-content">
+                <div class="content">
+                    <p>
+                        
+                            @{
+                                Html.RenderAction("GetAuthor", "Comments", new { id = item.UserID });
+                            }
+                        <small>@item.Date</small>
+                        <br>
+                        <br>
+                        @item.Content
+                    </p>
+                </div>
+            </div>
+        </article>
+    </div>
 }
 
 @{
-    Html.RenderAction("Create","Comments", new { id = ViewData["ArticleID"] });
+    Html.RenderAction("Create", "Comments", new { id = ViewData["ArticleID"] });
 }
